@@ -154,3 +154,36 @@ function updatePhysics() {
     cell.velY += -cell.offsetY * SPRING;
     cell.velX *= DAMPING;
     cell.velY *= DAMPING;
+    cell.offsetX += cell.velX;
+    cell.offsetY += cell.velY;
+    if (Math.abs(cell.offsetX) < 0.01 && Math.abs(cell.velX) < 0.01) {
+      cell.offsetX = cell.velX = 0;
+    }
+    if (Math.abs(cell.offsetY) < 0.01 && Math.abs(cell.velY) < 0.01) {
+      cell.offsetY = cell.velY = 0;
+    }
+  }
+}
+
+function animationLoop() {
+  updatePhysics();
+  renderFrame();
+  requestAnimationFrame(animationLoop);
+}
+
+window.addEventListener("mousemove", (e) => {
+  mouse.col = e.clientX / CELL_STEP;
+  mouse.row = e.clientY / CELL_STEP;
+  mouse.isMoving = true;
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    mouse.isMoving = false;
+  }, 50);
+});
+
+window.addEventListener("mouseleave", () => {
+  mouse.col = mouse.row = -999;
+  mouse.isMoving = false;
+});
+
+animationLoop();
