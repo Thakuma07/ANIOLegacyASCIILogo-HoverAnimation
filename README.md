@@ -2,6 +2,8 @@
 
 A creative, interactive ASCII logo animation project utilizing HTML5 Canvas and Vanilla JavaScript. As you hover over the ASCII art, the characters repel from the mouse cursor, creating a dynamic, physics-based fluid interaction.
 
+<img width="1920" height="1080" alt="Screenshot (447)" src="https://github.com/user-attachments/assets/9dc7d266-13b0-41a5-bdc3-d8e0b7cc2020" />
+
 ## ✨ Features
 
 - **Interactive Physics**: The ASCII grid reacts to cursor movements with simulated spring physics and damping.
